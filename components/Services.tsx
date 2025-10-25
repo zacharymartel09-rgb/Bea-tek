@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Service } from '../types';
 
@@ -36,7 +35,7 @@ const servicesData: Service[] = [
   {
     id: 'event-consulting',
     title: 'Conseil Événementiel',
-    description: 'Bénéficiez de notre expertise pour planifier votre événement. Nous vous accompagnons de la conception à la réalisation, pour un succès garanti.',
+    description: 'Bénéficiez de notre expertise pour planifier votre événement. Nous vous accompagnons de la conception à la réalisation, pour un événement mémorable et sans accroc.',
     icon: (
       <svg className="w-12 h-12 text-bea-tek-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
@@ -65,4 +64,3 @@ const Services: React.FC = () => {
 };
 
 export default Services;
-    

@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { ChatMessage } from '../types';
 import ChatMessageComponent from './ChatMessage';
@@ -132,7 +131,7 @@ const Chatbot: React.FC = () => {
             />
             <button
               onClick={handleSendMessage}
-              className="bg-bea-tek-magenta hover:bg-fuchsia-600 text-white p-2 rounded-md transition duration-300"
+              className="bg-bea-tek-magenta hover:bg-fuchsia-600 text-white p-2 rounded-md transition duration-300 transform hover:scale-105 shadow-lg"
               disabled={isLoading}
               aria-label="Send Message"
             >
@@ -148,4 +147,3 @@ const Chatbot: React.FC = () => {
 };
 
 export default Chatbot;
-    

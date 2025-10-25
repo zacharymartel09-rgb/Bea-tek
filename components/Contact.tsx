@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const Contact: React.FC = () => {
@@ -87,7 +86,7 @@ const Contact: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-bea-tek-magenta hover:bg-fuchsia-600 text-white font-bold py-3 px-6 rounded-md text-lg transition duration-300 transform hover:scale-105"
+            className="w-full bg-bea-tek-magenta hover:bg-fuchsia-600 text-white font-bold py-3 px-6 rounded-md text-lg transition duration-300 transform hover:scale-105 shadow-lg"
             disabled={status === 'submitting'}
           >
             {status === 'submitting' ? 'Envoi en cours...' : 'Envoyer le Message'}
@@ -105,4 +104,3 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
-    

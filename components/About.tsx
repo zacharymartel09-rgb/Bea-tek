@@ -7,7 +7,7 @@ const About: React.FC = () => {
         <div className="text-center lg:text-left">
           <h2 className="text-4xl font-bold text-bea-tek-magenta mb-6">À Propos de BEA-TEK</h2>
           <p className="text-lg text-gray-300 mb-4 leading-relaxed">
-            Chez BEA-TEK Music & Events, notre passion est de créer des ambiances sonores et visuelles exceptionnelles pour tous vos événements.
+            Chez BEA-TEK Music & Events, DJ passionné, je fais vibrer chaque soirée. Notre passion est de créer des ambiances sonores et visuelles exceptionnelles pour tous vos événements.
             Fondée il y a plusieurs années, notre entreprise s'est bâtie une réputation d'excellence grâce à notre engagement envers la qualité, la fiabilité et le professionnalisme.
           </p>
           <p className="text-lg text-gray-300 leading-relaxed">

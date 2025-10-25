@@ -20,12 +20,13 @@ const Hero: React.FC<HeroProps> = ({ onScrollToContact }) => {
           <span className="block text-4xl md:text-5xl mt-2 font-normal text-white">MUSIC & EVENTS</span>
         </h1>
         <p className="text-lg md:text-2xl mb-8 font-light max-w-2xl mx-auto">
-          Transformez votre événement en une expérience sonore et visuelle inoubliable avec BEA-TEK.
-          Des DJ professionnels à la sonorisation de pointe, nous créons l'ambiance parfaite.
+          Bienvenue sur BEA-TEK — ton univers musical. Ici, le son, c'est plus qu'une passion, c'est une expérience.
+          Nous transformons chaque événement en une symphonie inoubliable avec des DJ professionnels et une sonorisation de pointe,
+          créant des vibes sur mesure pour vous.
         </p>
         <button
           onClick={onScrollToContact}
-          className="bg-bea-tek-magenta hover:bg-fuchsia-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105"
+          className="bg-bea-tek-magenta hover:bg-fuchsia-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg"
         >
           Demandez un Devis
         </button>

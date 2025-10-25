@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Footer: React.FC = () => {
@@ -32,7 +31,7 @@ const Footer: React.FC = () => {
           </a>
         </div>
         <p className="text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} BEA-TEK Music & Events. Tous droits réservés.
+          &copy; {new Date().getFullYear()} BEA-TEK Music & Events — DJ & producteur musical. Fait avec passion à Montréal. Tous droits réservés.
         </p>
       </div>
     </footer>
@@ -40,4 +39,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-    
