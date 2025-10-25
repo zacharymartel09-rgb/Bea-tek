@@ -1,4 +1,3 @@
-
 import React, { useRef } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -27,26 +26,9 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-black min-h-screen font-sans">
-      <Navbar onNavLinkClick={scrollToSection} />
-      <main>
-        <div ref={sectionsRef.hero}>
-          <Hero onScrollToContact={() => scrollToSection('contact')} />
-        </div>
-        <div ref={sectionsRef.services}>
-          <Services />
-        </div>
-        <div ref={sectionsRef.about}>
-          <About />
-        </div>
-        <div ref={sectionsRef.contact}>
-          <Contact />
-        </div>
-      </main>
-      <Footer />
-      <Chatbot />
-
-      {/* Custom Tailwind CSS animations for chatbot */}
-      <style>{`
+      <style>
+        {`
+        /* Custom Tailwind CSS animations for chatbot */
         @keyframes fade-in-up {
           from {
             opacity: 0;
@@ -86,10 +68,27 @@ const App: React.FC = () => {
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #777;
         }
-      `}</style>
+        `}
+      </style>
+      <Navbar onNavLinkClick={scrollToSection} />
+      <main>
+        <div ref={sectionsRef.hero}>
+          <Hero onScrollToContact={() => scrollToSection('contact')} />
+        </div>
+        <div ref={sectionsRef.services}>
+          <Services />
+        </div>
+        <div ref={sectionsRef.about}>
+          <About />
+        </div>
+        <div ref={sectionsRef.contact}>
+          <Contact />
+        </div>
+      </main>
+      <Footer />
+      <Chatbot />
     </div>
   );
 };
 
 export default App;
-    

@@ -13,14 +13,14 @@ const Hero: React.FC<HeroProps> = ({ onScrollToContact }) => {
     >
       <div className="absolute inset-0 bg-black opacity-70"></div>
       <div className="relative z-10 text-white max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
-          <span className="text-bea-tek-magenta">BEA</span>
-          <span className="inline-block h-6 w-12 bg-bea-tek-magenta align-middle mx-2 -mt-2 md:-mt-4"></span>
-          <span className="text-bea-tek-magenta">TEK</span>
-          <span className="block text-4xl md:text-5xl mt-2 font-normal text-white">MUSIC & EVENTS</span>
+        <h1 className="text-5xl md:text-7xl font-extrabold mb-0 leading-tight">
+          <span className="text-bea-tek-magenta">BEATEK</span>
         </h1>
+        <p className="text-2xl md:text-4xl text-white opacity-80 font-medium mt-2 mb-4 tracking-wide">
+          EVENTS
+        </p>
         <p className="text-lg md:text-2xl mb-8 font-light max-w-2xl mx-auto">
-          Bienvenue sur BEA-TEK — ton univers musical. Ici, le son, c'est plus qu'une passion, c'est une expérience.
+          Bienvenue sur BEATEK Events — ton univers musical. Ici, le son, c'est plus qu'une passion, c'est une expérience.
           Nous transformons chaque événement en une symphonie inoubliable avec des DJ professionnels et une sonorisation de pointe,
           créant des vibes sur mesure pour vous.
         </p>

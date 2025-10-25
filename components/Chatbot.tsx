@@ -10,7 +10,7 @@ const Chatbot: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const BOT_NAME = 'BEA-TEK AI Assistant';
+  const BOT_NAME = 'BEATEK Events AI Assistant';
 
   useEffect(() => {
     scrollToBottom();

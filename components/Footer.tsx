@@ -5,10 +5,12 @@ const Footer: React.FC = () => {
     <footer className="bg-black py-10 text-white text-center">
       <div className="container mx-auto px-4">
         <div className="mb-6">
-          <p className="text-2xl font-bold text-bea-tek-magenta mb-2">
-            BEA-<span className="inline-block h-3 w-6 bg-bea-tek-magenta align-middle -mt-1 mx-1"></span>TEK
+          <p className="text-2xl font-bold text-bea-tek-magenta mb-0 leading-none">
+            BEATEK
           </p>
-          <p className="text-md text-white">Music & Events</p>
+          <p className="text-lg text-white opacity-80 font-medium tracking-wide">
+            EVENTS
+          </p>
         </div>
         <div className="flex justify-center space-x-6 mb-6">
           <a href="#" className="text-gray-400 hover:text-bea-tek-magenta transition duration-300">
@@ -31,7 +33,7 @@ const Footer: React.FC = () => {
           </a>
         </div>
         <p className="text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} BEA-TEK Music & Events — DJ & producteur musical. Fait avec passion à Montréal. Tous droits réservés.
+          &copy; {new Date().getFullYear()} BEATEK Events — DJ & producteur musical. Fait avec passion à Warwick. Tous droits réservés.
         </p>
       </div>
     </footer>

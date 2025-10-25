@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 interface NavbarProps {
@@ -17,11 +16,11 @@ const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
     <nav className="bg-black fixed w-full z-50 shadow-lg">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div
-          className="text-2xl font-bold text-bea-tek-magenta cursor-pointer"
+          className="text-2xl font-bold text-bea-tek-magenta cursor-pointer flex flex-col items-center leading-none"
           onClick={() => handleScrollTo('hero')}
         >
-          BEA-<span className="inline-block h-3 w-6 bg-bea-tek-magenta align-middle -mt-1 mx-1"></span>TEK
-          <span className="block text-sm font-normal text-white mt-1">MUSIC & EVENTS</span>
+          BEATEK
+          <span className="text-lg text-white opacity-80 font-medium tracking-wide">EVENTS</span>
         </div>
 
         {/* Mobile menu button */}
@@ -79,4 +78,3 @@ const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
 };
 
 export default Navbar;
-    
