@@ -1,16 +1,16 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
-// Ensure the API_KEY is available in the environment
-const API_KEY = process.env.API_KEY;
-
 export const geminiService = {
   async sendMessage(message: string): Promise<GenerateContentResponse> {
+    // Ensure the API_KEY is available in the environment
+    // Read API_KEY inside the function to ensure the latest value from window.aistudio.openSelectKey() is used.
+    const API_KEY = process.env.API_KEY;
+
     if (!API_KEY) {
-      throw new Error("API_KEY is not defined. Please ensure it's set in your environment.");
+      throw new Error("API_KEY_NOT_CONFIGURED"); // Custom error for app to handle
     }
 
     // Create a new GoogleGenAI instance for each call to ensure the latest API key is used
-    // and to handle potential API key selection changes if `window.aistudio.openSelectKey()` was used.
     const ai = new GoogleGenAI({ apiKey: API_KEY });
     const modelName = 'gemini-2.5-flash'; // Using gemini-2.5-flash for basic text tasks
 
@@ -42,11 +42,8 @@ Soyez concis mais informatif dans vos réponses, en visant toujours à guider l'
     } catch (error) {
       console.error("Error calling Gemini API:", error);
       // Check for specific error messages to prompt API key re-selection if needed for Veo models.
-      // Although this app uses 'gemini-2.5-flash', it's a good practice to include this check for future scalability.
       if (error instanceof Error && error.message.includes("Requested entity was not found.")) {
-        // In a full app, you might want to call window.aistudio.openSelectKey() here.
-        // For this app, we'll just throw a more user-friendly error.
-        throw new Error("Gemini API key might be invalid or unauthorized. Please ensure it's correctly configured.");
+        throw new Error("INVALID_API_KEY_ERROR"); // Custom error for app to handle
       }
       throw new Error(`Failed to get response from AI: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }

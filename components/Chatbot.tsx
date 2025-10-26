@@ -3,7 +3,12 @@ import { ChatMessage } from '../types';
 import ChatMessageComponent from './ChatMessage';
 import { geminiService } from '../services/geminiService';
 
-const Chatbot: React.FC = () => {
+interface ChatbotProps {
+  isApiKeyReady: boolean;
+  onApiKeyInvalidated: () => void;
+}
+
+const Chatbot: React.FC<ChatbotProps> = ({ isApiKeyReady, onApiKeyInvalidated }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
@@ -16,12 +21,20 @@ const Chatbot: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
+  useEffect(() => {
+    // Optionally add an initial message when the chatbot opens and API key is ready
+    if (isOpen && isApiKeyReady && messages.length === 0) {
+      // You could add a default welcome message from the bot here if desired
+    }
+  }, [isOpen, isApiKeyReady, messages.length]);
+
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleSendMessage = async () => {
-    if (input.trim() === '') return;
+    if (input.trim() === '' || !isApiKeyReady) return;
 
     const newUserMessage: ChatMessage = {
       id: Date.now().toString() + 'user',
@@ -47,9 +60,18 @@ const Chatbot: React.FC = () => {
       setMessages((prevMessages) => [...prevMessages, newBotMessage]);
     } catch (error) {
       console.error('Failed to send message to Gemini:', error);
+      let errorMessageText = `Une erreur est survenue : ${error instanceof Error ? error.message : 'erreur inconnue'}. Veuillez réessayer plus tard.`;
+
+      if (error instanceof Error) {
+        if (error.message === "API_KEY_NOT_CONFIGURED" || error.message === "INVALID_API_KEY_ERROR") {
+          errorMessageText = "Il semble que la clé API Gemini ne soit pas configurée ou est invalide. Veuillez sélectionner une clé API.";
+          onApiKeyInvalidated(); // Notify App.tsx to show the API key prompt
+        }
+      }
+
       const errorMessage: ChatMessage = {
         id: Date.now().toString() + 'error',
-        text: `Une erreur est survenue : ${error instanceof Error ? error.message : 'erreur inconnue'}. Veuillez réessayer plus tard.`,
+        text: errorMessageText,
         sender: 'bot',
         timestamp: new Date(),
       };
@@ -60,7 +82,7 @@ const Chatbot: React.FC = () => {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && !isLoading) {
+    if (e.key === 'Enter' && !isLoading && isApiKeyReady) {
       handleSendMessage();
     }
   };
@@ -100,6 +122,9 @@ const Chatbot: React.FC = () => {
               <div className="text-center text-gray-400 mt-10">
                 <p>Bienvenue ! Comment puis-je vous aider aujourd'hui ?</p>
                 <p className="mt-2 text-sm">Posez-moi une question sur nos services DJ, la sonorisation, ou pour un devis.</p>
+                {!isApiKeyReady && (
+                  <p className="mt-4 text-sm text-bea-tek-magenta">Veuillez sélectionner votre clé API pour utiliser l'assistant IA.</p>
+                )}
               </div>
             ) : (
               messages.map((msg) => (
@@ -125,14 +150,14 @@ const Chatbot: React.FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Écrivez votre message..."
+              placeholder={isApiKeyReady ? "Écrivez votre message..." : "Clé API requise pour le chat"}
               className="flex-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-bea-tek-magenta text-white mr-2"
-              disabled={isLoading}
+              disabled={isLoading || !isApiKeyReady}
             />
             <button
               onClick={handleSendMessage}
               className="bg-bea-tek-magenta hover:bg-fuchsia-600 text-white p-2 rounded-md transition duration-300 transform hover:scale-105 shadow-lg"
-              disabled={isLoading}
+              disabled={isLoading || !isApiKeyReady}
               aria-label="Send Message"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
