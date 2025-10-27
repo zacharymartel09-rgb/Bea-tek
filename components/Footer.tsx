@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Footer: React.FC = () => {
@@ -5,12 +6,7 @@ const Footer: React.FC = () => {
     <footer className="bg-black py-10 text-white text-center">
       <div className="container mx-auto px-4">
         <div className="mb-6">
-          <p className="text-2xl font-bold text-bea-tek-magenta mb-0 leading-none">
-            BEATEK
-          </p>
-          <p className="text-lg text-white opacity-80 font-medium tracking-wide">
-            EVENTS
-          </p>
+          <img src="/beatek-logo.png" alt="BEATEK Events Logo" className="h-16 mx-auto" />
         </div>
         <div className="flex justify-center space-x-6 mb-6">
           <a href="#" className="text-gray-400 hover:text-bea-tek-magenta transition duration-300">

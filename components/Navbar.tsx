@@ -16,13 +16,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
   return (
     <nav className="bg-black fixed w-full z-50 shadow-lg">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div
-          className="text-2xl font-bold text-bea-tek-magenta cursor-pointer flex flex-col items-center leading-none"
+        <button
           onClick={() => handleScrollTo('home')}
+          className="focus:outline-none cursor-pointer"
+          aria-label="BEATEK Events Home"
         >
-          BEATEK
-          <span className="text-lg text-white opacity-80 font-medium tracking-wide">EVENTS</span>
-        </div>
+          <img src="/beatek-logo.png" alt="BEATEK Events Logo" className="h-10 md:h-12 w-auto" />
+        </button>
 
         {/* Mobile menu button */}
         <div className="md:hidden">

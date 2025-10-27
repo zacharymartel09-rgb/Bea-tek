@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -16,11 +15,11 @@ const servicesData: Service[] = [
     id: 'dj',
     title: 'Services DJ',
     description: 'Nos DJs passionnés transforment votre événement en une fête inoubliable. Corporatifs, soirées privées – nous adaptons la musique à votre style et à votre public.',
-    fullDescription: 'Avec BEATEK Events, chaque battement est une promesse, chaque mix une célébration. Nos DJs sont de véritables architectes sonores, dotés d\'une capacité inégalée à lire l\'énergie d\'une foule et à y répondre avec une bande-son parfaite. Que vous recherchiez l\'élégance discrète pour un cocktail, l\'ambiance électrisante d\'une soirée dansante, ou la magie d\'un mariage, nous adaptons notre style, du top 40 aux genres underground, en passant par des classiques intemporels. Nous utilisons un équipement DJ de pointe et une bibliothèque musicale infinie pour créer une expérience sonore fluide, des transitions impeccables et une piste de danse qui ne désemplit jamais. Laissez-nous orchestrer les moments les plus mémorables de votre événement, où chaque note résonne avec votre vision.',
+    fullDescription: 'Avec BEATEK Events, chaque battement est une promesse, chaque mix une célébration. Nos DJs sont de véritables architectes sonores, dotés d\'une capacité inégalée à lire l\'énergie d\'une foule et à y répondre avec une bande-son parfaite. Que vous recherchiez l\'élégance discrète pour un cocktail, l\'ambiance électrisante d\'une soirée dansante, nous adaptons notre style, du top 40 aux genres underground, en passant par des classiques intemporels. Nous utilisons un équipement DJ de pointe et une bibliothèque musicale infinie pour créer une expérience sonore fluide, des transitions impeccables et une piste de danse qui ne désemplit jamais. Laissez-nous orchestrer les moments les plus mémorables de votre événement, où chaque note résonne avec votre vision.',
     images: [
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/dj1.jpg',
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/dj2.jpg',
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/dj3.jpg',
+      '/img/dj1.jpg',
+      '/img/dj2.jpg',
+      '/img/dj3.jpg',
     ],
     icon: (
       <svg className="w-12 h-12 text-bea-tek-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -34,9 +33,9 @@ const servicesData: Service[] = [
     description: 'Une qualité de son cristalline pour tous vos besoins. De petits rassemblements aux grands événements, nous fournissons et installons des systèmes de sonorisation de qualité.',
     fullDescription: 'Le son est l\'âme de tout événement, et chez BEATEK Events, nous sommes maîtres dans l\'art de le parfaire. Nous offrons des solutions de sonorisation haut de gamme, conçues pour s\'adapter à l\'acoustique unique de chaque lieu, du petit rassemblement intime aux grandes productions en plein air. Notre équipement de pointe garantit une clarté vocale exceptionnelle, des basses profondes et une fidélité audio irréprochable, que ce soit pour des discours importants, des performances musicales live ou une ambiance de fond sophistiquée. Nos ingénieurs du son experts gèrent l\'installation, l\'optimisation et la surveillance en temps réel, assurant une expérience auditive immersive et sans faille, du premier mot au dernier accord.',
     images: [
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/sound1.jpg',
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/sound2.jpg',
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/sound3.jpg',
+      '/img/sound1.jpg',
+      '/img/sound2.jpg',
+      '/img/sound3.jpg',
     ],
     icon: (
       <svg className="w-12 h-12 text-bea-tek-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -50,9 +49,9 @@ const servicesData: Service[] = [
     description: 'Créez l\'atmosphère parfaite avec nos solutions d\'éclairage dynamiques. Des lumières d\'ambiance aux effets spéciaux, nous illuminons votre événement.',
     fullDescription: 'Transformez n\'importe quel espace en un tableau vivant avec nos solutions d\'éclairage ambiant et dynamique. Chez BEATEK Events, nous comprenons que la lumière est bien plus qu\'une simple illumination ; c\'est un outil puissant pour créer des émotions, des points focaux et des ambiances inoubliables. Des projecteurs architecturaux qui subliment les contours d\'un lieu aux éclairages intelligents qui dansent au rythme de la musique, en passant par les gobos personnalisés et les ambiances colorées, nous concevons des scénographies lumineuses sur mesure. Nos designers lumière utilisent les dernières technologies pour sculpter l\'espace, mettre en valeur les artistes et les décors, et immerger vos invités dans une expérience visuelle captivante et spectaculaire.',
     images: [
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/lighting1.jpg',
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/lighting2.jpg',
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/lighting3.jpg',
+      '/img/lighting1.jpg',
+      '/img/lighting2.jpg',
+      '/img/lighting3.jpg',
     ],
     icon: (
       <svg className="w-12 h-12 text-bea-tek-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -66,9 +65,9 @@ const servicesData: Service[] = [
     description: 'Bénéficiez de notre accompagnement pour planifier votre événement. Nous vous accompagnons de la conception à la réalisation, pour un événement mémorable et sans accroc.',
     fullDescription: 'La complexité de l\'organisation événementielle peut être intimidante, mais avec le service de conseil de BEATEK Events, la sérénité est à portée de main. Forts de notre vaste expérience, nous sommes votre partenaire dédié, vous guidant à travers chaque étape, de l\'idéation initiale à l\'exécution impeccable. Nous vous aidons à affiner votre vision, à optimiser votre budget, à sélectionner les meilleurs prestataires et à orchestrer une logistique sans faille. Notre expertise anticipe les défis et trouve des solutions créatives pour chaque détail, garantissant que votre événement soit non seulement réussi, mais qu\'il dépasse toutes vos attentes, vous permettant de profiter pleinement de chaque instant sans stress.',
     images: [
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/consulting1.jpg',
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/consulting2.jpg',
-      'https://raw.githubusercontent.com/google/gemini-micro-web-example/main/img/consulting3.jpg',
+      '/img/consulting1.jpg',
+      '/img/consulting2.jpg',
+      '/img/consulting3.jpg',
     ],
     icon: (
       <svg className="w-12 h-12 text-bea-tek-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
