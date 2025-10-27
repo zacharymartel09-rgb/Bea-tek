@@ -5,8 +5,10 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-black py-10 text-white text-center">
       <div className="container mx-auto px-4">
+        {/* Logo removed */}
         <div className="mb-6">
-          <img src="/beatek-logo.png" alt="BEATEK Events Logo" className="h-16 mx-auto" />
+          <h3 className="text-2xl font-bold text-bea-tek-magenta">BEATEK</h3>
+          <p className="text-base text-white -mt-1">Events</p>
         </div>
         <div className="flex justify-center space-x-6 mb-6">
           <a href="#" className="text-gray-400 hover:text-bea-tek-magenta transition duration-300">

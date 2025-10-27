@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 
 interface HeroProps {
@@ -15,11 +13,12 @@ const Hero: React.FC<HeroProps> = ({ onScrollToContact }) => {
     >
       <div className="absolute inset-0 bg-black opacity-70"></div>
       <div className="relative z-10 text-white max-w-4xl mx-auto">
-        <img
-          src="/beatek-logo.png"
-          alt="BEATEK Events Logo"
-          className="h-32 md:h-48 mx-auto mb-4"
-        />
+        <h1 className="mb-4">
+          <div className="flex flex-col items-center justify-center">
+            <span className="text-5xl md:text-7xl font-extrabold text-bea-tek-magenta">BEATEK</span>
+            <span className="text-2xl md:text-4xl text-white -mt-1">Events</span>
+          </div>
+        </h1>
         <p className="text-lg md:text-2xl mb-8 font-light max-w-2xl mx-auto">
           Bienvenue sur BEATEK Events — ton univers musical. Ici, le son, c'est plus qu'une passion, c'est une expérience.
           Nous transformons chaque événement en une symphonie inoubliable avec des DJs et une sonorisation de pointe,

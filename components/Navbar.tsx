@@ -18,10 +18,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <button
           onClick={() => handleScrollTo('home')}
-          className="focus:outline-none cursor-pointer"
+          className="focus:outline-none cursor-pointer text-white"
           aria-label="BEATEK Events Home"
         >
-          <img src="/beatek-logo.png" alt="BEATEK Events Logo" className="h-10 md:h-12 w-auto" />
+          <div className="flex flex-col items-start">
+            <span className="text-xl font-bold text-bea-tek-magenta">BEATEK</span>
+            <span className="text-base text-white -mt-1">Events</span>
+          </div>
         </button>
 
         {/* Mobile menu button */}

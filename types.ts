@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 
 export interface ChatMessage {
@@ -13,6 +14,7 @@ export interface Service {
   title: string;
   description: string;
   fullDescription: string; // Added for detail page
-  images: string[];        // Added for detail page
   icon: React.ReactNode;
+  // Added images property to the Service interface
+  images: string[];
 }
