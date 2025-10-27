@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Service } from '../types';
 
 interface ServiceDetailProps {
@@ -44,16 +44,19 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onBack }) => {
         </p>
 
         {service.images && service.images.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {service.images.map((imageUrl, index) => (
-              <div key={index} className="overflow-hidden rounded-lg shadow-xl border border-gray-700">
-                <img
-                  src={imageUrl}
-                  alt={`${service.title} - Image ${index + 1}`}
-                  className="w-full h-48 object-cover object-center transform hover:scale-105 transition duration-500"
-                />
-              </div>
-            ))}
+          <div className="mb-12">
+            <h3 className="text-3xl font-bold text-white mb-6 text-center md:text-left">Galerie d'images</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {service.images.map((imageUrl, index) => (
+                <div key={`static-${index}`} className="overflow-hidden rounded-lg shadow-xl border border-gray-700">
+                  <img
+                    src={imageUrl}
+                    alt={`${service.title} - Image ${index + 1}`}
+                    className="w-full h-48 object-cover object-center transform hover:scale-105 transition duration-500"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
