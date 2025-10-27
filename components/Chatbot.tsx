@@ -76,9 +76,9 @@ const Chatbot: React.FC<ChatbotProps> = () => {
     // Services
     if (lowerInput.includes('service') || lowerInput.includes('prestation') || lowerInput.includes('dj') || lowerInput.includes('sonorisation') || lowerInput.includes('éclairage') || lowerInput.includes('consulting') || lowerInput.includes('offre') || lowerInput.includes('quoi faites-vous')) {
       const responses = [
-        "Chez BEATEK Events, nous transformons votre vision en réalité ! Nous excellons dans les **Services DJ Pro** pour une ambiance électrisante, la **Sonorisation Événementielle** pour un son parfait, l'**Éclairage Ambiant** qui crée une atmosphère magique, et le **Conseil Événementiel** pour une organisation sereine. Quel aspect de votre événement aimeriez-vous perfectionner ?",
-        "Nous proposons une gamme complète de services pour tous vos événements : **DJs professionnels**, **systèmes de sonorisation** à la pointe, **solutions d'éclairage créatives** et un accompagnement personnalisé en **conseil événementiel**. Pourriez-vous me dire quel service retient le plus votre attention ?",
-        "Préparez-vous à être impressionné ! BEATEK Events c'est l'expertise DJ, une qualité sonore impeccable, des jeux de lumière éblouissants et des conseils d'experts pour la planification. Chaque service est conçu pour rendre votre événement absolument mémorable. Quel est le cœur de votre projet ?"
+        "Chez BEATEK Events, nous transformons votre vision en réalité ! Nous excellons dans les **Services DJ** pour une ambiance électrisante, la **Sonorisation Événementielle** pour un son parfait, l'**Éclairage Ambiant** qui crée une atmosphère magique, et le **Conseil Événementiel** pour une organisation sereine. Quel aspect de votre événement aimeriez-vous perfectionner ?",
+        "Nous proposons une gamme complète de services pour tous vos événements : **DJs passionnés**, **systèmes de sonorisation** à la pointe, **solutions d'éclairage créatives** et un accompagnement personnalisé en **conseil événementiel**. Pourriez-vous me dire quel service retient le plus votre attention ?",
+        "Préparez-vous à être impressionné ! BEATEK Events c'est le talent DJ, une qualité sonore impeccable, des jeux de lumière éblouissants et des conseils pour la planification. Chaque service est conçu pour rendre votre événement absolument mémorable. Quel est le cœur de votre projet ?"
       ];
       return getRandomResponse(responses);
     }
@@ -109,17 +109,17 @@ const Chatbot: React.FC<ChatbotProps> = () => {
       const responses = [
         "Je suis l'Assistant Virtuel de BEATEK Events ! Ma mission est de vous guider à travers nos services, de répondre à vos premières questions et de faciliter votre expérience en vous orientant vers les bonnes informations. Je suis là pour rendre votre exploration de BEATEK Events des plus agréables !",
         "Je suis votre guide pour tout ce qui concerne BEATEK Events ! Mon objectif est de vous fournir des informations claires et de vous aider à démarrer la planification de votre événement idéal. N'hésitez pas à me solliciter pour toute question.",
-        "BEATEK Events, c'est l'histoire d'une passion pour la musique et les événements inoubliables ! Nous sommes une entreprise dédiée à transformer chaque occasion en une expérience sonore et visuelle exceptionnelle, grâce à nos DJs professionnels et à nos équipements de pointe. Vous pouvez en savoir plus sur notre parcours et nos valeurs dans la section 'À Propos de Nous' de notre site !"
+        "BEATEK Events, c'est l'histoire d'une passion pour la musique et les événements inoubliables ! Nous sommes une entreprise dédiée à transformer chaque occasion en une expérience sonore et visuelle exceptionnelle, grâce à nos DJs et à nos équipements de pointe. Vous pouvez en savoir plus sur notre parcours et nos valeurs dans la section 'À Propos de Nous' de notre site !"
       ];
       return getRandomResponse(responses);
     }
     
     // Events types
-    if (lowerInput.includes('événements') || lowerInput.includes("type d'événement") || lowerInput.includes('mariage') || lowerInput.includes('corporatif') || lowerInput.includes('anniversaire') || lowerInput.includes('fête') || lowerInput.includes('gala') || lowerInput.includes('célébration')) {
+    if (lowerInput.includes('événements') || lowerInput.includes("type d'événement") || lowerInput.includes('corporatif') || lowerInput.includes('anniversaire') || lowerInput.includes('fête') || lowerInput.includes('gala') || lowerInput.includes('célébration')) {
       const responses = [
-        "Chez BEATEK Events, nous aimons célébrer la vie sous toutes ses formes ! Nous mettons notre expertise au service d'une multitude d'événements : mariages romantiques, soirées corporatives dynamiques, anniversaires mémorables, galas prestigieux, ou toute autre fête privée. Quel type d'événement planifiez-vous ? Nous adorons les défis créatifs !",
-        "Que ce soit un mariage, un événement corporatif, un anniversaire ou une grande fête, BEATEK Events a l'expérience et l'équipement pour s'adapter à toutes les ambiances. Nous sommes maîtres dans l'art de créer des moments uniques. Parlez-moi de votre vision !",
-        "De la petite célébration intime aux grands rassemblements, nos services sont conçus pour s'intégrer parfaitement à votre événement. Mariages, anniversaires, fêtes d'entreprise... la liste est longue ! Votre événement est notre prochaine création artistique."
+        "Chez BEATEK Events, nous aimons célébrer la vie sous toutes ses formes ! Nous mettons notre talent au service d'une multitude d'événements : soirées corporatives dynamiques, anniversaires mémorables, galas prestigieux, ou toute autre fête privée. Quel type d'événement planifiez-vous ? Nous adorons les défis créatifs !",
+        "Que ce soit un événement corporatif, un anniversaire ou une grande fête, BEATEK Events a l'expérience et l'équipement pour s'adapter à toutes les ambiances. Nous sommes maîtres dans l'art de créer des moments uniques. Parlez-moi de votre vision !",
+        "De la petite célébration intime aux grands rassemblements, nos services sont conçus pour s'intégrer parfaitement à votre événement. Anniversaires, fêtes d'entreprise... la liste est longue ! Votre événement est notre prochaine création artistique."
       ];
       return getRandomResponse(responses);
     }
@@ -128,9 +128,9 @@ const Chatbot: React.FC<ChatbotProps> = () => {
     // Fix: Changed 'qui s'occupe' to "qui s'occupe" to correctly parse the string literal.
     if (lowerInput.includes('équipe') || lowerInput.includes("dj's") || lowerInput.includes('expertise') || lowerInput.includes('professionnel') || lowerInput.includes("qui s'occupe") || lowerInput.includes('musique')) {
       const responses = [
-        "Notre équipe est le cœur battant de BEATEK Events ! Nous sommes des DJs et techniciens passionnés, animés par l'envie de créer l'ambiance parfaite pour vous. Chaque membre apporte son talent et son professionnalisme pour que votre événement soit un succès total. Nous sommes fiers de notre expertise et de notre dévouement !",
-        "Nos DJs sont de véritables artistes de l'ambiance ! Ils maîtrisent une vaste palette de styles musicaux et savent s'adapter à votre public pour faire de chaque instant un moment inoubliable. Découvrez l'engagement et le talent qui se cachent derrière BEATEK Events dans notre section 'À Propos de Nous'.",
-        "La musique est notre passion ! Nos DJs sont non seulement des experts en mixage, mais aussi des lecteurs d'ambiance hors pair. Ils sauront parfaitement jongler avec les genres pour que la piste de danse ne désemplisse jamais. Quel style musical imaginez-vous pour votre événement ?"
+        "Notre équipe est le cœur battant de BEATEK Events ! Nous sommes des DJs et techniciens passionnés, animés par l'envie de créer l'ambiance parfaite pour vous. Chaque membre apporte son talent et son dévouement pour que votre événement soit un succès total. Nous sommes fiers de notre détermination et de notre engagement !",
+        "Nos DJs sont de véritables artistes de l'ambiance ! Ils connaissent une vaste palette de styles musicaux et savent s'adapter à votre public pour faire de chaque instant un moment inoubliable. Découvrez l'engagement et le talent qui se cachent derrière BEATEK Events dans notre section 'À Propos de Nous'.",
+        "La musique est notre passion ! Nos DJs sont non seulement doués en mixage, mais aussi des lecteurs d'ambiance hors pair. Ils sauront parfaitement jongler avec les genres pour que la piste de danse ne désemplisse jamais. Quel style musical imaginez-vous pour votre événement ?"
       ];
       return getRandomResponse(responses);
     }
@@ -160,7 +160,7 @@ const Chatbot: React.FC<ChatbotProps> = () => {
       const responses = [
         "Nos DJs sont des caméléons musicaux ! Du top 40 aux classiques intemporels, du house au hip-hop, du rock aux rythmes latins... nous adaptons la playlist à vos goûts et à l'ambiance que vous souhaitez créer. Avez-vous un genre musical favori ou un thème en tête pour votre événement ?",
         "Chez BEATEK Events, la diversité musicale est notre force ! Nous couvrons tous les genres et personnalisons la sélection pour qu'elle corresponde parfaitement à l'énergie de votre fête. N'hésitez pas à nous faire part de vos préférences, nous aimons créer des ambiances uniques !",
-        "Vous rêvez d'une soirée thématique ou d'un mélange éclectique ? Nos DJs sont experts pour mixer les styles et maintenir l'énergie sur la piste de danse. Dites-nous ce qui vous fait vibrer, et nous ferons en sorte que la musique soit inoubliable !"
+        "Vous rêvez d'une soirée thématique ou d'un mélange éclectique ? Nos DJs sont doués pour mixer les styles et maintenir l'énergie sur la piste de danse. Dites-nous ce qui vous fait vibrer, et nous ferons en sorte que la musique soit inoubliable !"
       ];
       return getRandomResponse(responses);
     }
@@ -168,7 +168,7 @@ const Chatbot: React.FC<ChatbotProps> = () => {
     // Equipment / Quality
     if (lowerInput.includes('équipement') || lowerInput.includes('matériel') || lowerInput.includes('son') || lowerInput.includes('lumière') || lowerInput.includes('qualité')) {
       const responses = [
-        "La qualité est notre priorité ! Nous utilisons des équipements de sonorisation et d'éclairage professionnels de dernière génération pour garantir un son cristallin et des effets lumineux époustouflants. C'est l'assurance d'une expérience immersive et sans faille pour votre événement.",
+        "La qualité est notre priorité ! Nous utilisons des équipements de sonorisation et d'éclairage de dernière génération pour garantir un son cristallin et des effets lumineux époustouflants. C'est l'assurance d'une expérience immersive et sans faille pour votre événement.",
         "Notre matériel est soigneusement sélectionné pour sa performance et sa fiabilité. Que ce soit pour la clarté du son ou la puissance de l'éclairage, nous investissons dans le meilleur pour sublimer chaque instant de votre événement. Une question spécifique sur un type d'équipement ?",
         "Un événement réussi passe aussi par un équipement technique irréprochable. Chez BEATEK Events, nous vous garantissons des systèmes son et lumière de haute qualité, installés et gérés par nos experts, pour une performance visuelle et auditive impeccable."
       ];
@@ -178,7 +178,7 @@ const Chatbot: React.FC<ChatbotProps> = () => {
     // General "About us" (more specific than who are you)
     // Fix: Changed 'c'est quoi' to "c'est quoi" to correctly parse the string literal.
     if (lowerInput.includes('beatek') && (lowerInput.includes("c'est quoi") || lowerInput.includes('a propos') || lowerInput.includes('historique'))) {
-      return "BEATEK Events, c'est l'union de la passion et de l'expertise pour la création d'événements musicaux et visuels d'exception. Fondée par des amoureux du son et de l'ambiance, notre entreprise s'engage à offrir des prestations sur mesure, alliant professionnalisme et créativité. Nous sommes basés à Warwick et fiers de faire vibrer vos moments précieux. Découvrez notre histoire dans la section 'À Propos de Nous' !";
+      return "BEATEK Events, c'est l'union de la passion et du talent pour la création d'événements musicaux et visuels d'exception. Fondée par des amoureux du son et de l'ambiance, notre entreprise s'engage à offrir des prestations sur mesure, alliant dévouement et créativité. Nous sommes basés à Warwick et fiers de faire vibrer vos moments précieux. Découvrez notre histoire dans la section 'À Propos de Nous' !";
     }
 
     // Fallback/General
@@ -312,3 +312,4 @@ const Chatbot: React.FC<ChatbotProps> = () => {
 };
 
 export default Chatbot;
+    

@@ -1,11 +1,12 @@
+
 import React from 'react';
 import { Service } from '../types';
 
 const servicesData: Service[] = [
   {
     id: 'dj',
-    title: 'Services DJ Pro',
-    description: 'Nos DJs expérimentés transforment votre événement en une fête inoubliable. Mariages, corporatifs, soirées privées – nous adaptons la musique à votre style et à votre public.',
+    title: 'Services DJ',
+    description: 'Nos DJs passionnés transforment votre événement en une fête inoubliable. Corporatifs, soirées privées – nous adaptons la musique à votre style et à votre public.',
     icon: (
       <svg className="w-12 h-12 text-bea-tek-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 6h.01M12 16h.01"></path>
@@ -15,7 +16,7 @@ const servicesData: Service[] = [
   {
     id: 'sound-system',
     title: 'Sonorisation Événementielle',
-    description: 'Une qualité de son cristalline pour tous vos besoins. De petits rassemblements aux grands événements, nous fournissons et installons des systèmes de sonorisation professionnels.',
+    description: 'Une qualité de son cristalline pour tous vos besoins. De petits rassemblements aux grands événements, nous fournissons et installons des systèmes de sonorisation de qualité.',
     icon: (
       <svg className="w-12 h-12 text-bea-tek-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.647 11.523 3 12 3h.01C12.477 3 13.077 3.647 13.414 4.053L18 8.646"></path>
@@ -35,7 +36,7 @@ const servicesData: Service[] = [
   {
     id: 'event-consulting',
     title: 'Conseil Événementiel',
-    description: 'Bénéficiez de notre expertise pour planifier votre événement. Nous vous accompagnons de la conception à la réalisation, pour un événement mémorable et sans accroc.',
+    description: 'Bénéficiez de notre accompagnement pour planifier votre événement. Nous vous accompagnons de la conception à la réalisation, pour un événement mémorable et sans accroc.',
     icon: (
       <svg className="w-12 h-12 text-bea-tek-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
@@ -64,3 +65,4 @@ const Services: React.FC = () => {
 };
 
 export default Services;
+    

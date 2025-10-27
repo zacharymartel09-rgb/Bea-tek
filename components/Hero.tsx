@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 interface HeroProps {
@@ -21,7 +22,7 @@ const Hero: React.FC<HeroProps> = ({ onScrollToContact }) => {
         </p>
         <p className="text-lg md:text-2xl mb-8 font-light max-w-2xl mx-auto">
           Bienvenue sur BEATEK Events — ton univers musical. Ici, le son, c'est plus qu'une passion, c'est une expérience.
-          Nous transformons chaque événement en une symphonie inoubliable avec des DJ professionnels et une sonorisation de pointe,
+          Nous transformons chaque événement en une symphonie inoubliable avec des DJs et une sonorisation de pointe,
           créant des vibes sur mesure pour vous.
         </p>
         <button
