@@ -12,5 +12,7 @@ export interface Service {
   id: string;
   title: string;
   description: string;
+  fullDescription: string; // Added for detail page
+  images: string[];        // Added for detail page
   icon: React.ReactNode;
 }

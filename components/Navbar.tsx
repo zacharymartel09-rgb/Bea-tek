@@ -1,13 +1,14 @@
+
 import React, { useState } from 'react';
 
 interface NavbarProps {
-  onNavLinkClick: (id: string) => void;
+  onNavLinkClick: (id: 'home' | 'services' | 'about' | 'contact') => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleScrollTo = (id: string) => {
+  const handleScrollTo = (id: 'home' | 'services' | 'about' | 'contact') => {
     onNavLinkClick(id);
     setIsOpen(false); // Close mobile menu after clicking
   };
@@ -17,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div
           className="text-2xl font-bold text-bea-tek-magenta cursor-pointer flex flex-col items-center leading-none"
-          onClick={() => handleScrollTo('hero')}
+          onClick={() => handleScrollTo('home')}
         >
           BEATEK
           <span className="text-lg text-white opacity-80 font-medium tracking-wide">EVENTS</span>
@@ -57,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
 
         {/* Desktop menu */}
         <div className="hidden md:flex space-x-8">
-          <button onClick={() => handleScrollTo('hero')} className="text-white hover:text-bea-tek-magenta transition duration-300">Home</button>
+          <button onClick={() => handleScrollTo('home')} className="text-white hover:text-bea-tek-magenta transition duration-300">Home</button>
           <button onClick={() => handleScrollTo('services')} className="text-white hover:text-bea-tek-magenta transition duration-300">Services</button>
           <button onClick={() => handleScrollTo('about')} className="text-white hover:text-bea-tek-magenta transition duration-300">About Us</button>
           <button onClick={() => handleScrollTo('contact')} className="text-white hover:text-bea-tek-magenta transition duration-300">Contact</button>
@@ -67,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
       {/* Mobile menu dropdown */}
       {isOpen && (
         <div className="md:hidden bg-bea-tek-dark pb-4 px-4">
-          <button onClick={() => handleScrollTo('hero')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">Home</button>
+          <button onClick={() => handleScrollTo('home')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">Home</button>
           <button onClick={() => handleScrollTo('services')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">Services</button>
           <button onClick={() => handleScrollTo('about')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">About Us</button>
           <button onClick={() => handleScrollTo('contact')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">Contact</button>
