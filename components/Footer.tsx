@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
           </a>
         </div>
         <p className="text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} BEATEK Events — DJ & producteur musical. Fait avec passion à Warwick. Tous droits réservés.
+          &copy; {new Date().getFullYear()} BEATEK Events — DJ & producteur musical. Fait avec passion à Warwick.
         </p>
       </div>
     </footer>
