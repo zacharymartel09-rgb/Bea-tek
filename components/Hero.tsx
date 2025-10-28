@@ -36,6 +36,7 @@ const Hero: React.FC<HeroProps> = ({ onScrollToContact }) => {
           
           {/* Right Column: About Section */}
           <div className="bg-black bg-opacity-40 p-8 rounded-lg shadow-xl backdrop-blur-sm">
+            
             <h2 className="text-3xl font-bold text-bea-tek-magenta mb-4">À Propos de BEATEK</h2>
             <p className="text-md text-gray-200 mb-4 leading-relaxed">
               Chez BEATEK Music & Events, la passion du DJing nous anime et nous faisons vibrer chaque soirée. Notre passion est de créer des ambiances sonores et visuelles exceptionnelles pour tous vos événements : soirées privées, événements d'entreprise, festivals et lancements de produits.

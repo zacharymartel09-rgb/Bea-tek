@@ -1,14 +1,15 @@
 
+
 import React, { useState } from 'react';
 
 interface NavbarProps {
-  onNavLinkClick: (id: 'home' | 'services' | 'contact') => void;
+  onNavLinkClick: (id: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleScrollTo = (id: 'home' | 'services' | 'contact') => {
+  const handleScrollTo = (id: string) => {
     onNavLinkClick(id);
     setIsOpen(false); // Close mobile menu after clicking
   };

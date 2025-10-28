@@ -96,15 +96,15 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'home' | 'services' | 'contact' | 'serviceDetail'>('home');
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
 
-  const navigateTo = (view: 'home' | 'services' | 'contact' | 'serviceDetail', serviceId?: string) => {
-    setCurrentView(view);
+  const navigateTo = (view: 'home' | 'services' | 'contact' | 'serviceDetail' | string, serviceId?: string) => {
+    setCurrentView(view as 'home' | 'services' | 'contact' | 'serviceDetail'); // Cast for currentView state type
     setSelectedServiceId(serviceId || null);
 
     // If navigating to a main section, scroll to it after view change
     if (['home', 'services', 'contact'].includes(view)) {
       // Small delay to allow DOM to update before scrolling
       setTimeout(() => {
-        const section = sectionsRef[view as keyof typeof sectionsRef].current;
+        const section = sectionsRef[view as 'home' | 'services' | 'contact'].current;
         if (section) {
           const yOffset = -80; // Adjust for fixed navbar height
           const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -174,7 +174,7 @@ const App: React.FC = () => {
         `}
       </style>
 
-      <Navbar onNavLinkClick={(id) => navigateTo(id as any)} /> {/* Cast to any for Navbar compatibility */}
+      <Navbar onNavLinkClick={navigateTo} />
       <main>
         {currentView === 'serviceDetail' && selectedService ? (
           <ServiceDetail service={selectedService} onBack={handleBackToServices} onScrollToContact={() => navigateTo('contact')} />
