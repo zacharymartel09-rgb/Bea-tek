@@ -20,7 +20,7 @@ const Hero: React.FC<HeroProps> = ({ onScrollToContact }) => {
           </div>
         </h1>
         <p className="text-lg md:text-2xl mb-8 font-light max-w-2xl mx-auto">
-          Bienvenue sur BEATEK Events — ton univers musical. Ici, le son, c'est plus qu'une passion, c'est une expérience.
+          Bienvenue sur BEATEK Events — ton univers musical. Ici, le son, c'est plus qu'une passion, c'est un art.
           Nous transformons chaque événement en une symphonie inoubliable avec des DJs et une sonorisation de pointe,
           créant des vibes sur mesure pour vous.
         </p>

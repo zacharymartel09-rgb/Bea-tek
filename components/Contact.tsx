@@ -14,21 +14,28 @@ const Contact: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    // Simulate API call
+    
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate network delay
-      console.log('Form data submitted:', formData);
+      const { name, email, message } = formData;
+      const subject = `Demande de devis de ${name}`;
+      const body = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+      
+      // Use mailto to open user's email client
+      window.location.href = `mailto:beatekevents@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
       setFormData({ name: '', email: '', message: '' }); // Clear form
       setStatus('success');
+
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Error creating mailto link:', error);
       setStatus('error');
-    } finally {
-      setTimeout(() => setStatus('idle'), 5000); // Reset status after 5 seconds
     }
+
+    // Reset status after a delay, regardless of outcome
+    setTimeout(() => setStatus('idle'), 5000);
   };
 
   return (
@@ -90,13 +97,13 @@ const Contact: React.FC = () => {
             className="w-full bg-bea-tek-magenta hover:bg-fuchsia-600 text-white font-bold py-3 px-6 rounded-md text-lg transition duration-300 transform hover:scale-105 shadow-lg"
             disabled={status === 'submitting'}
           >
-            {status === 'submitting' ? 'Envoi en cours...' : 'Envoyer le Message'}
+            {status === 'submitting' ? 'Préparation de votre e-mail...' : 'Envoyer le Message'}
           </button>
           {status === 'success' && (
-            <p className="mt-4 text-center text-green-400">Votre message a été envoyé avec succès !</p>
+            <p className="mt-4 text-center text-green-400">Votre client de messagerie devrait s'ouvrir pour envoyer l'e-mail.</p>
           )}
           {status === 'error' && (
-            <p className="mt-4 text-center text-red-400">Une erreur est survenue lors de l'envoi. Veuillez réessayer.</p>
+            <p className="mt-4 text-center text-red-400">Une erreur est survenue. Veuillez réessayer.</p>
           )}
         </form>
       </div>
