@@ -65,7 +65,7 @@ const Chatbot: React.FC<ChatbotProps> = () => {
           setMessages([
             {
               id: Date.now().toString() + 'error-init',
-              text: "Désolé, je n'ai pas pu démarrer le chat. Veuillez réessayer plus tard ou contacter directement BEATEK Events.",
+              text: "Désolé, un problème est survenu lors du démarrage de la session de chat. Veuillez réessayer plus tard ou contacter directement BEATEK Events.",
               sender: 'bot',
               timestamp: new Date(),
             },
@@ -135,7 +135,7 @@ const Chatbot: React.FC<ChatbotProps> = () => {
       console.error('Gemini API Error:', error);
       const errorMessage =
         fullBotResponse ||
-        "Désolé, une erreur est survenue lors de la communication avec l'IA. Veuillez réessayer plus tard.";
+        "Désolé, une erreur est survenue lors de la communication avec l'IA. Veuillez vérifier votre connexion Internet et réessayer. Si le problème persiste, n'hésitez pas à nous contacter.";
 
       setMessages((prev) =>
         prev.map((msg) =>
