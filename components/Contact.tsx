@@ -41,7 +41,7 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-20 bg-bea-tek-dark text-white">
       <div className="container mx-auto px-4 max-w-3xl">
-        <h2 className="text-4xl font-bold text-center text-bea-tek-magenta mb-12">Contactez-nous</h2>
+        <h2 className="text-4xl font-bold text-center text-bea-tek-magenta mb-12">Nous Contacter</h2>
         <p className="text-lg text-center text-gray-300 mb-8">
           Avez-vous des questions, besoin d'un devis ou souhaitez-vous discuter de votre prochain événement ?
           Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.

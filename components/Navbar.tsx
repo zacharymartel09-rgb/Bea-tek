@@ -2,13 +2,13 @@
 import React, { useState } from 'react';
 
 interface NavbarProps {
-  onNavLinkClick: (id: 'home' | 'services' | 'about' | 'contact') => void;
+  onNavLinkClick: (id: 'home' | 'services' | 'contact') => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleScrollTo = (id: 'home' | 'services' | 'about' | 'contact') => {
+  const handleScrollTo = (id: 'home' | 'services' | 'contact') => {
     onNavLinkClick(id);
     setIsOpen(false); // Close mobile menu after clicking
   };
@@ -61,20 +61,18 @@ const Navbar: React.FC<NavbarProps> = ({ onNavLinkClick }) => {
 
         {/* Desktop menu */}
         <div className="hidden md:flex space-x-8">
-          <button onClick={() => handleScrollTo('home')} className="text-white hover:text-bea-tek-magenta transition duration-300">Home</button>
+          <button onClick={() => handleScrollTo('home')} className="text-white hover:text-bea-tek-magenta transition duration-300">Accueil</button>
           <button onClick={() => handleScrollTo('services')} className="text-white hover:text-bea-tek-magenta transition duration-300">Services</button>
-          <button onClick={() => handleScrollTo('about')} className="text-white hover:text-bea-tek-magenta transition duration-300">About Us</button>
-          <button onClick={() => handleScrollTo('contact')} className="text-white hover:text-bea-tek-magenta transition duration-300">Contact</button>
+          <button onClick={() => handleScrollTo('contact')} className="text-white hover:text-bea-tek-magenta transition duration-300">Nous Contacter</button>
         </div>
       </div>
 
       {/* Mobile menu dropdown */}
       {isOpen && (
         <div className="md:hidden bg-bea-tek-dark pb-4 px-4">
-          <button onClick={() => handleScrollTo('home')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">Home</button>
+          <button onClick={() => handleScrollTo('home')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">Accueil</button>
           <button onClick={() => handleScrollTo('services')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">Services</button>
-          <button onClick={() => handleScrollTo('about')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">About Us</button>
-          <button onClick={() => handleScrollTo('contact')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">Contact</button>
+          <button onClick={() => handleScrollTo('contact')} className="block w-full text-left py-2 px-4 text-white hover:bg-gray-800 transition duration-300">Nous Contacter</button>
         </div>
       )}
     </nav>

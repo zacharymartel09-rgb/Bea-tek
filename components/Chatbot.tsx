@@ -1,12 +1,9 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ChatMessage } from '../types';
 import ChatMessageComponent from './ChatMessage';
-import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
+import { geminiService } from '../services/geminiService';
 
-interface ChatbotProps {
-  // isApiKeyReady: boolean; // Removed: no longer needed as there's no API key to manage
-  // onApiKeyInvalidated: () => void; // Removed: no longer needed
-}
+interface ChatbotProps {}
 
 const Chatbot: React.FC<ChatbotProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,15 +13,8 @@ const Chatbot: React.FC<ChatbotProps> = () => {
   const [isChatInitializing, setIsChatInitializing] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // useRef to hold the chat instance to avoid re-creating on re-renders
-  const chatInstanceRef = useRef<Chat | null>(null);
-
   const BOT_NAME = 'Assistant BEATEK Events';
-  const GEMINI_MODEL = 'gemini-2.5-flash';
-  const SYSTEM_INSTRUCTION =
-    "You are a friendly and helpful BEATEK Events virtual assistant specializing in DJ services, event sound systems, lighting, and event consulting. You assist users with inquiries about event planning, service details, quotes, and booking information. Always maintain a professional yet engaging tone. Encourage users to use the contact form for detailed inquiries or bookings. If you cannot directly answer a question, guide the user to the appropriate section of the website or to the contact form.";
 
-  // Helper to get a random response from an array (retained for initial welcome)
   const getRandomResponse = (responses: string[]): string => {
     return responses[Math.floor(Math.random() * responses.length)];
   };
@@ -33,28 +23,19 @@ const Chatbot: React.FC<ChatbotProps> = () => {
     scrollToBottom();
   }, [messages]);
 
-  // Effect to manage chat session lifecycle
   useEffect(() => {
-    if (isOpen && !chatInstanceRef.current && !isChatInitializing) {
+    if (isOpen) {
       setIsChatInitializing(true);
       const initializeChat = async () => {
         try {
-          const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-          const chat = ai.chats.create({
-            model: GEMINI_MODEL,
-            config: {
-              systemInstruction: SYSTEM_INSTRUCTION,
-            },
-          });
-          chatInstanceRef.current = chat;
+          await geminiService.initializeChat();
 
-          // Add an initial welcome message
           const welcomeMessage: ChatMessage = {
             id: Date.now().toString() + 'welcome',
             text: getRandomResponse([
-              "Bonjour et bienvenue chez BEATEK Events ! Je suis votre assistant virtuel, ravi de vous aider. N'hésitez pas à me poser des questions sur nos services DJ, la sonorisation, l'éclairage, ou la planification de votre prochain événement. Comment puis-je rendre votre journée plus musicale ?",
-              "Salut ! Je suis l'assistant de BEATEK Events, votre allié pour des événements inoubliables. Dites-moi ce qui vous intéresse : nos prestations DJ, nos équipements, un devis ? Je suis là pour vous guider !",
-              "Hello ! Prêt à faire vibrer votre événement ? Je suis l'assistant BEATEK Events et je suis là pour répondre à toutes vos questions. Par quoi souhaitez-vous commencer ?"
+              "Salut ! Bienvenue chez BEATEK Events ! Je suis l'assistant virtuel, prêt à mettre le feu à ton prochain événement. Demande-moi n'importe quoi sur nos services DJ, la sono, les lumières... Comment je peux t'aider à monter le son aujourd'hui ?",
+              "Yo ! C'est l'assistant de BEATEK Events. T'as besoin d'un DJ qui déchire, d'un son qui claque ou de lumières de dingue pour ta soirée ? Dis-moi tout, je suis là pour ça !",
+              "Hey ! Prêt à organiser une soirée légendaire ? Je suis l'assistant BEATEK Events et je suis là pour répondre à toutes tes questions. On commence par quoi ?"
             ]),
             sender: 'bot',
             timestamp: new Date(),
@@ -75,13 +56,11 @@ const Chatbot: React.FC<ChatbotProps> = () => {
         }
       };
       initializeChat();
-    } else if (!isOpen && chatInstanceRef.current) {
-      // Close session when chatbot is closed
-      chatInstanceRef.current = null;
+    } else {
+      geminiService.closeChat();
       setMessages([]); // Clear messages for next session
     }
-  }, [isOpen, isChatInitializing]);
-
+  }, [isOpen]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -103,12 +82,11 @@ const Chatbot: React.FC<ChatbotProps> = () => {
     setIsLoading(true);
 
     const botMessageId = Date.now().toString() + 'bot-stream';
-    // Add a placeholder bot message for streaming
     setMessages((prevMessages) => [
       ...prevMessages,
       {
         id: botMessageId,
-        text: '', // Start with empty text
+        text: '',
         sender: 'bot',
         timestamp: new Date(),
       },
@@ -116,43 +94,28 @@ const Chatbot: React.FC<ChatbotProps> = () => {
 
     let fullBotResponse = '';
     try {
-      if (!chatInstanceRef.current) {
-        throw new Error("Chat instance not initialized.");
-      }
-      const response = await chatInstanceRef.current.sendMessageStream({ message: userMessageText });
-
-      for await (const chunk of response) {
-        if (chunk.text) {
-          fullBotResponse += chunk.text;
-          setMessages((prev) =>
-            prev.map((msg) =>
-              msg.id === botMessageId ? { ...msg, text: fullBotResponse } : msg
-            )
-          );
-        }
+      const stream = geminiService.sendMessageStream(userMessageText);
+      for await (const textChunk of stream) {
+        fullBotResponse += textChunk;
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === botMessageId ? { ...msg, text: fullBotResponse } : msg
+          )
+        );
       }
     } catch (error) {
       console.error('Gemini API Error:', error);
       const errorMessage =
-        fullBotResponse ||
         "Désolé, une erreur est survenue lors de la communication avec l'IA. Veuillez vérifier votre connexion Internet et réessayer. Si le problème persiste, n'hésitez pas à nous contacter.";
 
       setMessages((prev) =>
         prev.map((msg) =>
           msg.id === botMessageId
-            ? { ...msg, text: errorMessage, timestamp: new Date() }
+            ? { ...msg, text: errorMessage }
             : msg
         )
       );
     } finally {
-      // Ensure the timestamp is finalized even if there was no streaming text
-      setMessages((prev) =>
-        prev.map((msg) =>
-          msg.id === botMessageId
-            ? { ...msg, timestamp: new Date() } // Finalize timestamp
-            : msg
-        )
-      );
       setIsLoading(false);
     }
   };
