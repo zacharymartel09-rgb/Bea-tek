@@ -6,10 +6,21 @@ const SYSTEM_INSTRUCTION =
 
 class GeminiService {
   private chat: Chat | null = null;
-  private ai: GoogleGenAI;
+  private ai: GoogleGenAI | null = null;
 
   constructor() {
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    // The constructor is now empty to allow for lazy initialization.
+  }
+
+  private getAiInstance(): GoogleGenAI {
+    if (!this.ai) {
+      if (!process.env.API_KEY) {
+        console.error("Gemini API key is missing. Please set the API_KEY environment variable.");
+        throw new Error("La clé API de Gemini est manquante.");
+      }
+      this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    }
+    return this.ai;
   }
 
   async initializeChat(): Promise<void> {
@@ -17,7 +28,8 @@ class GeminiService {
       return;
     }
     try {
-      this.chat = this.ai.chats.create({
+      const ai = this.getAiInstance();
+      this.chat = ai.chats.create({
         model: GEMINI_MODEL,
         config: {
           systemInstruction: SYSTEM_INSTRUCTION,
@@ -25,7 +37,8 @@ class GeminiService {
       });
     } catch (error) {
       console.error("Failed to initialize chat session:", error);
-      throw new Error("Failed to initialize chat session.");
+      // Re-throw with a user-friendly message
+      throw new Error("Impossible d'initialiser la session de chat. Veuillez vérifier la configuration de la clé API.");
     }
   }
 
